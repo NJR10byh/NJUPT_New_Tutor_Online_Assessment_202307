@@ -99,8 +99,7 @@
                     <input type="radio" name="Q5" value="2"/> B. 开题考核内容为选题、内容和方法，三项内容均为B以上为考核通过；有一项为C或D为考核不通过。<br/>
                 </label>
                 <label>
-                    <input type="radio" name="Q5" value="3"/> C.
-                    新任导师（指导第一届和第二届硕士研究生的导师）所指导研究生的学位论文的开题，各学院不需要组织专家组进行开题答辩。<br/>
+                    <input type="radio" name="Q5" value="3"/> C. 新任导师（指导第一届和第二届硕士研究生的导师）所指导研究生的学位论文的开题，各学院不需要组织专家组进行开题答辩。<br/>
                 </label>
                 <label>
                     <input type="radio" name="Q5" value="4"/> D. 学院将考核汇总结果及采取的相关措施报研究生院。
@@ -142,7 +141,7 @@
             <p>8. 《江苏省关于加强研究生导师队伍建设的意见》,以下除 ( ) 外均为研究生导师的基本权利。</p>
             <p class="select">
                 <label>
-                    <input type="radio" name="Q8" value="1"/> A. 招生主导权 <br/>
+                    <input type="radio" name="Q8" value="1"/> A. 招生主导权<br/>
                 </label>
                 <label>
                     <input type="radio" name="Q8" value="2"/> B. 培养自主权<br/>
@@ -358,16 +357,16 @@
     <button onclick="back()" id="back">返回</button>
     <div id="successpage">
         <p>恭喜您通过了测试！</p>
-        <!-- <button id="download" onclick="download()">下载结业证书</button> -->
-        <a id="download">下载结业证书</a>
+        <a id="download">查看结业证书</a>
+    </div>
+    <div id="successpageTips">
+        <p>（Tips：长按可保存结业证书）</p>
     </div>
     <div id="lostpage">
         <p>很遗憾，您未通过本次考试！</p>
     </div>
     <div id="result">
-        <p style="font-size: 20px;font-weight: bold;width: 60%;" class="answer">本次得分: <span id="Fen"
-                                                                                                style="color: red;"></span>
-            分</p>
+        <p style="font-size: 20px;font-weight: bold;width: 60%;" class="answer">本次得分: <span id="Fen" style="color: red;"></span>分</p>
         <p style="font-size: 15px;font-weight: bold;border-top: 1.5px solid #e0e0e0;margin-top: 10px;" class="answer">
             您一共答对了 <span id="right_number" style="color:red"> 题</span>
             <br/>
@@ -452,26 +451,26 @@
 
         let aryAns = new Array(1, 1, 2, 4, 3, 1, 4, 1, 4, 4, 3, 1, 4, 4, 4, 3, 1, 1, 2, 1); //正确答案的数组
         let answer = new Array(
-            "A",
-            "A",
-            "B",
-            "D",
-            "C",
-            "A",
-            "D",
-            "A",
-            "D",
-            "D",
-            "C",
-            "A",
-            "D",
-            "D",
-            "D",
-            "C",
-            "A",
-            "A",
-            "B",
-            "A"
+            "A. 信达天下，自强不息；厚德 弘毅 求是 笃行",
+            "A. ①②③④⑤⑥⑦⑧",
+            "B. 研究生导师",
+            "D. 研究生学位论文的两种盲审包括学院盲审和导师组织的常规评审",
+            "C. 新任导师（指导第一届和第二届硕士研究生的导师）所指导研究生的学位论文的开题，各学院不需要组织专家组进行开题答辩。",
+            "A. 思想政治素质",
+            "D. 不准带研究生出去参加学术会议、学术研讨等活动",
+            "A. 招生主导权",
+            "D. 4",
+            "D. 以研究生名义虚报、冒领助研津贴，违规故意迟发、克扣研究生助研津贴。",
+            "C. 无项目、无经费、无成果，三",
+            "A. 1名，两",
+            "D. ①②③",
+            "D. 以上都有",
+            "D. 论文盲审未出结论时，可先进行答辩。",
+            "C. ①②③④",
+            "A. 第四学期",
+            "A. 3，4，5，8",
+            "B. 培养方案",
+            "A. 对于暂停招生的导师，到期自动恢复招生，不需由研究生院审核批准。"
         );
         for (let i = 0; i < questionArray.length; i++) {
             if (Name(questionArray[i])) {
@@ -493,29 +492,30 @@
         let error_question = " ";
         for (let i = 0; i < rightArray.length; i++) {
             if (rightArray[i] == 0) {
-                error_question += i + 1 + "(" + answer[i] + ")" + ", ";
+                error_question += i + 1 + "、（" + answer[i] + "）" + "\n";
             }
         }
         let Fen = right_number * 5;
-        if (location.href.split("=")[2] != 0) {
-            // 上传分数
-            axios.post("http://123.60.15.247:8089/assessment/result/uploadResult", {
-                "jobNumber": jobNumber,
-                "result": Fen
-            }).then((res) => {
-                console.log(res);
-            });
-        }
+        // if (location.href.split("=")[2] != 0) {
+        //     // 上传分数
+        //     axios.post("http://123.60.15.247:8089/assessment/result/uploadResult", {
+        //         "jobNumber": jobNumber,
+        //         "result": Fen
+        //     }).then((res) => {
+        //         console.log(res);
+        //     });
+        // }
         if (count > 0) {
             if (Fen >= 85) {
                 document.getElementById("download").href = "http://123.60.15.247:8089/assessment/file/" + jobNumber + ".png";
-                document.getElementById("successpage").style.opacity = "1";
+                document.getElementById("successpage").style.opacity = "1"
+                document.getElementById("successpageTips").style.opacity = "1";
             } else {
                 document.getElementById("lostpage").style.opacity = "1";
             }
         }
         document.getElementById("Fen").innerText = Fen;
-        document.getElementById("right_number").innerText = right_number;
+        document.getElementById("right_number").innerText = right_number+" 道题";
         if (error_question != " ") {
             document.getElementById("error_question").innerText = error_question;
         }
