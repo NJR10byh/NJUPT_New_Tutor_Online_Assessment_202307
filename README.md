@@ -1,2 +1,2 @@
-# NJUPT-New-Tutor-Online-Assessment-2023-7
-# 南京邮电大学2023年新任导师在线测评系统
+# NJUPT_New_Tutor_Online_Assessment_202307
+# 南京邮电大学2023年新任研究生导师在线测评系统
