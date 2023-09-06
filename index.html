@@ -31,7 +31,8 @@
                     <input type="text" placeholder="请输入工号" onclick="ChangeTopimg2()" id="jobNumber"/>
                 </div>
             </div>
-            <button type="submit" onclick="Tologin()">
+            <!--            <button type="submit" onclick="Tologin()">-->
+            <button type="submit" onclick="nologin()">
                 <img src="./img/Login.png" alt="登录" width="80px" height="80px"/>
             </button>
         </div>
@@ -52,6 +53,10 @@
             document.getElementById("notice").style.opacity = 0;
             document.getElementById("loginMoudle").style.opacity = 1;
         }
+    }
+
+    function nologin() {
+        alert("答题已结束！");
     }
 
     function Tologin() {

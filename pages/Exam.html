@@ -99,7 +99,8 @@
                     <input type="radio" name="Q5" value="2"/> B. 开题考核内容为选题、内容和方法，三项内容均为B以上为考核通过；有一项为C或D为考核不通过。<br/>
                 </label>
                 <label>
-                    <input type="radio" name="Q5" value="3"/> C. 新任导师（指导第一届和第二届硕士研究生的导师）所指导研究生的学位论文的开题，各学院不需要组织专家组进行开题答辩。<br/>
+                    <input type="radio" name="Q5" value="3"/> C.
+                    新任导师（指导第一届和第二届硕士研究生的导师）所指导研究生的学位论文的开题，各学院不需要组织专家组进行开题答辩。<br/>
                 </label>
                 <label>
                     <input type="radio" name="Q5" value="4"/> D. 学院将考核汇总结果及采取的相关措施报研究生院。
@@ -353,7 +354,7 @@
             </p>
         </div>
     </div>
-    <button onclick="submit()" id="btn"><span id="btntext">交卷</span></button>
+    <button onclick="submit()" id="btn" disabled><span id="btntext">交卷</span></button>
     <button onclick="back()" id="back">返回</button>
     <div id="successpage">
         <p>恭喜您通过了测试！</p>
@@ -366,7 +367,9 @@
         <p>很遗憾，您未通过本次考试！</p>
     </div>
     <div id="result">
-        <p style="font-size: 20px;font-weight: bold;width: 60%;" class="answer">本次得分: <span id="Fen" style="color: red;"></span>分</p>
+        <p style="font-size: 20px;font-weight: bold;width: 60%;" class="answer">本次得分: <span id="Fen"
+                                                                                                style="color: red;"></span>分
+        </p>
         <p style="font-size: 15px;font-weight: bold;border-top: 1.5px solid #e0e0e0;margin-top: 10px;" class="answer">
             您一共答对了 <span id="right_number" style="color:red"> 题</span>
             <br/>
@@ -515,7 +518,7 @@
             }
         }
         document.getElementById("Fen").innerText = Fen;
-        document.getElementById("right_number").innerText = right_number+" 道题";
+        document.getElementById("right_number").innerText = right_number + " 道题";
         if (error_question != " ") {
             document.getElementById("error_question").innerText = error_question;
         }
