@@ -32,7 +32,7 @@
                 </div>
             </div>
             <!--            <button type="submit" onclick="Tologin()">-->
-            <button type="submit" onclick="nologin()">
+            <button type="submit" onclick="Tologin()">
                 <img src="./img/Login.png" alt="登录" width="80px" height="80px"/>
             </button>
         </div>
@@ -60,14 +60,13 @@
     }
 
     function Tologin() {
-        // alert("答题已结束！");
         let userName = document.getElementById("userName").value;
         let jobNumber = document.getElementById("jobNumber").value;
         if (userName == "" || jobNumber == "") {
             alert("请将姓名、工号填写完整");
         } else {
             if (confirm("请您确认\n填写的姓名和工号是否正确\n姓名：" + userName + "\n工号：" + jobNumber)) {
-                axios.post("http://123.60.15.247:8089/assessment/login/loginByAccount", {
+                axios.post("http://49.235.141.197:8089/assessment/login/loginByAccount", {
                     userName: userName,
                     jobNumber: jobNumber,
                 }).then((res) => {
