@@ -81,7 +81,8 @@
 <body onload="show()">
 <div id="Box">
     <div class="inside">
-        <button onclick="start()" disabled>开始答题</button>
+        <button onclick="toLogin()">开始答题</button>
+        <!--        <button onclick="start()">开始答题</button>-->
         <div class="text">
             <p>答题次数剩余: <span id="count"></span> 次</p>
             <p id="history1">最高分: <span id="history1info"></span> 分</p>
@@ -96,7 +97,7 @@
     function show() {
         // console.log(location.href);
         jobNumber = location.href.split("=")[1];
-        axios.post("http://49.235.141.197:8089/assessment/result/getResultByJobNumber?jobNumber=" + jobNumber)
+        axios.post("http://111.229.130.46:8089/assessment/result/getResultByJobNumber?jobNumber=" + jobNumber)
             .then((res) => {
                 console.log(res)
                 let resultList = [];
@@ -107,8 +108,13 @@
                 document.getElementById("history1info").innerHTML = Math.max(...resultList);
                 document.getElementById("history1").style.opacity = "1";
                 document.getElementById("count").innerHTML = count;
-            });
+            })
         document.getElementById("Box").style.opacity = "1";
+    }
+
+    function toLogin() {
+        let url = "../index.html";
+        window.location.replace(url);
     }
 
     function start() {

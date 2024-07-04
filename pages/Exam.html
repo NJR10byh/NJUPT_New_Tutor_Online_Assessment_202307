@@ -6,7 +6,7 @@
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>南京邮电大学研究生培养基本规定测试</title>
+    <title>南京邮电大学研究生导师培训试题</title>
     <link rel="stylesheet" href="../css/Exam.css"/>
     <script src="../js/axios.js"></script>
     <script src="../js/jquery.js"></script>
@@ -14,10 +14,11 @@
 
 <body onload="Show()">
 <div id="Outside">
-    <h3 class="title">南京邮电大学研究生培养基本规定测试</h3>
+    <h3 class="title">南京邮电大学研究生导师培训试题</h3>
     <div id="time"></div>
     <div class="Item">
         <div class="item1">
+            <div style="font-size: 19px;font-weight: bold;">单选题 100分（20题，5分/题）</div>
             <p>
                 1. 南京邮电大学精神是________，校训是________。( )
             </p>
@@ -354,8 +355,11 @@
             </p>
         </div>
     </div>
-    <button onclick="submit()" id="btn" disabled><span id="btntext">交卷</span></button>
-    <button onclick="back()" id="back">返回</button>
+    <button onclick="toLogin()" id="btn"><span id="btntext">交卷</span></button>
+    <button onclick="toLogin()" id="back">返回</button>
+
+    <!--    <button onclick="submit()" id="btn"><span id="btntext">交卷</span></button>-->
+    <!--    <button onclick="back()" id="back">返回</button>-->
     <div id="successpage">
         <p>恭喜您通过了测试！</p>
         <a id="download">查看结业证书</a>
@@ -384,6 +388,11 @@
     let jobNumber = location.href.split("=")[1].split("&")[0];
     let count = location.href.split("=")[2];
     let timer = null;
+
+    function toLogin() {
+        let url = "../index.html";
+        window.location.replace(url);
+    }
 
     function Show() {
         if (count == 0) {
@@ -501,7 +510,7 @@
         let Fen = right_number * 5;
         if (location.href.split("=")[2] != 0) {
             // 上传分数
-            axios.post("http://49.235.141.197:8089/assessment/result/uploadResult", {
+            axios.post("http://111.229.130.46:8089/assessment/result/uploadResult", {
                 "jobNumber": jobNumber,
                 "result": Fen
             }).then((res) => {
@@ -510,7 +519,7 @@
         }
         if (count > 0) {
             if (Fen >= 85) {
-                document.getElementById("download").href = "http://49.235.141.197:8089/assessment/file/" + jobNumber + ".png";
+                document.getElementById("download").href = "http://111.229.130.46:8089/assessment/file/" + jobNumber + ".png";
                 document.getElementById("successpage").style.opacity = "1"
                 document.getElementById("successpageTips").style.opacity = "1";
             } else {
